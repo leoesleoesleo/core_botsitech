@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 # Especifica la ruta completa al archivo requirements.txt
-with open('/requirements.txt') as f:
+with open('requirements.txt') as f:
     requirements = f.read().splitlines()
     
 setup(
