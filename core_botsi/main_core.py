@@ -6,13 +6,12 @@ import json
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, AIMessage, ChatMessage
 
-
-
 # Internal Library
 from core_botsi.onboarding import OnboardingStateMachine
-from utils import save_content_s3, download_s3
-from settings import logger
+from settings.utils import save_content_s3, download_s3
+from settings.settings import logger
 from core_botsi import services
+
 
 log = logger
 

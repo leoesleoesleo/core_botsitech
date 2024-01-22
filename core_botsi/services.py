@@ -1,7 +1,7 @@
 
 import uuid
 
-from settings import logger
+from settings.settings import logger
 
 from openai.embeddings_utils import get_embedding, cosine_similarity
 
