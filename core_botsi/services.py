@@ -3,6 +3,7 @@ import uuid
 
 from settings.settings import logger
 
+import openai 
 from openai.embeddings_utils import get_embedding, cosine_similarity
 
 
@@ -32,6 +33,7 @@ def validate_json_structure(
 
 def seek_response_to_intention(
         *,
+        openai_api_key: str, 
         seek:str,
         tag: dict,
         products_customer: dict
@@ -42,6 +44,7 @@ def seek_response_to_intention(
         1. Por producto y retornar el producto con la estructura correcta
         2. Por categoria de productos y retorna el listado de productos de esa categoria
         """
+        openai.api_key = openai_api_key
         n_word_embed = get_embedding(
             seek,
             engine="text-embedding-ada-002"
