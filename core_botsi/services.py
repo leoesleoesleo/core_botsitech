@@ -6,6 +6,7 @@ from settings.settings import logger
 import openai 
 from openai.embeddings_utils import get_embedding, cosine_similarity
 
+model_embedding = "text-embedding-3-small"
 
 def validate_json_structure(
     *,
@@ -47,7 +48,7 @@ def seek_response_to_intention(
         openai.api_key = openai_api_key
         n_word_embed = get_embedding(
             seek,
-            engine="text-embedding-ada-002"
+            engine=model_embedding
         )
         aux_sim = 0
         aux_text_sought = ""
@@ -79,17 +80,17 @@ def system_embedding_v2(*, tag: dict) -> dict:
             for category in tag["category_products"]:
                 embeddings[category["category"]] = get_embedding(
                     category["category"], 
-                    engine="text-embedding-ada-002"
+                    engine=model_embedding
                 )
                 for product in category["products"]:
                     embeddings[product] = get_embedding(
                     product,
-                    engine="text-embedding-ada-002"
+                    engine=model_embedding
                 )
             for intent in tag["intents"]:
                 embeddings[intent["intent"]] = get_embedding(
                     intent["intent"], 
-                    engine="text-embedding-ada-002"
+                    engine=model_embedding
                 )
             tag["embeddings"] = embeddings
         except Exception as e:
